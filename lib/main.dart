@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:food_delivery/dish_card.dart';
+import 'package:food_delivery/cuisines.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -25,6 +26,7 @@ class _DishListState extends State<DishList> {
           title: Text("RASOI"),
           centerTitle: true,
         ),
-        body: DishCard());
+        // body: DishCard());
+        body: CuisineCard());
   }
 }
