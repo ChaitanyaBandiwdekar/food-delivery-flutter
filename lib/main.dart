@@ -22,7 +22,7 @@ class _DishListState extends State<DishList> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("My Quotes"),
+          title: Text("RASOI"),
           centerTitle: true,
         ),
         body: DishCard());
