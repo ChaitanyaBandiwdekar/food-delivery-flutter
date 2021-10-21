@@ -1,16 +1,28 @@
-# food_delivery
 
-A new Flutter project.
 
-## Getting Started
+ # RASOI – THE ONLINE FOOD DELIVERY APP
 
-This project is a starting point for a Flutter application.
+## Installation
 
-A few resources to get you started if this is your first Flutter project:
+TBD
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## APP DESCRIPTION
+- RASOI is an online food delivery application that enables users to order foods from their favorite restaurants.
+- The user can take a look at the Menus offered by different Restaurants.
+- At first, the user can select the type of cuisine he/she wants, and a list of restaurants appears on the interface after which the user can select a particular restaurant and view the menu.
+- To order food the user must be logged in.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## FUNCTIONALITIES
+-	Authentication
+- Convenient to use
+-  Clean UI
+- Search Functionality
+- 	Sort by Cost
+-	Form Validation
+
+### TECHNOLOGY STACK
+TBD
+
+### UI DESIGN
+[FIGMA LINK](
+https://www.figma.com/file/JmUEJAV71KRtBsMo26nqwg/Delivery-App_UI-Kit-(Copy)?node-id=33%3A444)
