@@ -23,9 +23,10 @@ class DishCard extends StatelessWidget {
       height: 180,
       child: Card(
           color: Colors.white,
-          margin: EdgeInsets.fromLTRB(15, 7.5, 15, 7.5),
+          shadowColor: Colors.grey[800],
+          margin: EdgeInsets.fromLTRB(0, 7.5, 0, 7.5),
           child: Padding(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(12),
               child: Row(
                 children: [
                   Column(
@@ -125,7 +126,10 @@ class DishCard extends StatelessWidget {
 
                                 child: ElevatedButton(
                                     onPressed: () {},
-                                    child: Icon(Icons.remove_sharp),
+                                    child: Icon(
+                                      Icons.remove_sharp,
+                                      color: Colors.amber,
+                                    ),
                                     style: ElevatedButton.styleFrom(
                                       padding: EdgeInsets.all(0),
                                       primary: Colors
@@ -160,7 +164,10 @@ class DishCard extends StatelessWidget {
 
                                 child: ElevatedButton(
                                     onPressed: () {},
-                                    child: Icon(Icons.add),
+                                    child: Icon(
+                                      Icons.add,
+                                      color: Colors.amber,
+                                    ),
                                     style: ElevatedButton.styleFrom(
                                       padding: EdgeInsets.all(0),
                                       primary: Colors
