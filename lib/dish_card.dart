@@ -1,17 +1,21 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'dish.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class DishCard extends StatelessWidget {
-  final Dish dish = Dish(
-      "Veg Manchurian",
-      300,
-      "Soft vegetable balls served with chinese gravy",
-      4.5,
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5c_yHX2htBSQmrKUo6h4bw5rctcQn4LRsLg&usqp=CAU",
-      true);
+  final Dish dish;
+  DishCard(this.dish);
+  // final Dish dish = Dish(
+  //     "Veg Manchurian",
+  //     300,
+  //     "Soft vegetable balls served with chinese gravy",
+  //     4.5,
+  //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5c_yHX2htBSQmrKUo6h4bw5rctcQn4LRsLg&usqp=CAU",
+  //     true);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +23,7 @@ class DishCard extends StatelessWidget {
       height: 180,
       child: Card(
           color: Colors.white,
-          margin: EdgeInsets.all(15),
+          margin: EdgeInsets.fromLTRB(15, 7.5, 15, 7.5),
           child: Padding(
               padding: EdgeInsets.all(10),
               child: Row(
@@ -64,17 +68,26 @@ class DishCard extends StatelessWidget {
                           children: [
                             Text(
                               dish.name,
-                              style: TextStyle(fontSize: 19),
+                              style: TextStyle(
+                                  fontSize: 19, fontWeight: FontWeight.bold),
                             ),
                             // Expanded(
                             //   flex: 1, // default
                             //   child: SizedBox(), // required field
                             // ),
                             Spacer(),
-                            Icon(
-                              Icons.circle,
-                              color: dish.veg ? Colors.green : Colors.red,
-                              size: 15,
+                            Container(
+                              padding: const EdgeInsets.all(2),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: dish.veg
+                                          ? Colors.green
+                                          : Colors.red)),
+                              child: Icon(
+                                Icons.circle,
+                                color: dish.veg ? Colors.green : Colors.red,
+                                size: 15,
+                              ),
                             ),
                           ],
                         ),
@@ -83,17 +96,24 @@ class DishCard extends StatelessWidget {
                         ),
                         Text(
                           "₹ " + dish.price.toString(),
-                          style: TextStyle(fontSize: 15),
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
                           height: 5,
                         ),
-                        Text(
-                          dish.description,
-                          style: TextStyle(fontSize: 10),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 5,
-                          softWrap: false,
+                        Expanded(
+                          flex: 5,
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.vertical,
+                            child: Text(
+                              dish.description,
+                              style: TextStyle(fontSize: 12),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 5,
+                              softWrap: false,
+                            ),
+                          ),
                         ),
                         Spacer(),
                         Row(
@@ -102,10 +122,12 @@ class DishCard extends StatelessWidget {
                             Container(
                                 height: 30, //height of button
                                 width: 30, //width of button
+
                                 child: ElevatedButton(
                                     onPressed: () {},
                                     child: Icon(Icons.remove_sharp),
                                     style: ElevatedButton.styleFrom(
+                                      padding: EdgeInsets.all(0),
                                       primary: Colors
                                           .black87, //background color of button
                                       shape: RoundedRectangleBorder(
@@ -113,31 +135,40 @@ class DishCard extends StatelessWidget {
                                               BorderRadius.circular(5)),
                                     ))),
                             SizedBox(
-                              width: 5,
+                              width: 10,
                             ),
-                            Text(
-                              "0",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  backgroundColor: Colors.greenAccent[600]),
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.green,
+                                  borderRadius: BorderRadius.circular(5)),
+                              width: 30,
+                              height: 30,
+                              child: Center(
+                                child: Text(
+                                  "0",
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.white),
+                                ),
+                              ),
                             ),
                             SizedBox(
-                              width: 5,
+                              width: 10,
                             ),
-                            SizedBox(
+                            Container(
                                 height: 30, //height of button
                                 width: 30, //width of button
+
                                 child: ElevatedButton(
                                     onPressed: () {},
                                     child: Icon(Icons.add),
                                     style: ElevatedButton.styleFrom(
+                                      padding: EdgeInsets.all(0),
                                       primary: Colors
                                           .black87, //background color of button
                                       shape: RoundedRectangleBorder(
-                                          //to set border radius to button
                                           borderRadius:
                                               BorderRadius.circular(5)),
-                                    )))
+                                    ))),
                           ],
                         )
                       ],
