@@ -6,16 +6,16 @@ import 'package:flutter/painting.dart';
 import 'dish.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-class DishCard extends StatelessWidget {
-  final Dish dish;
+class DishCard extends StatefulWidget {
+  Dish dish;
   DishCard(this.dish);
-  // final Dish dish = Dish(
-  //     "Veg Manchurian",
-  //     300,
-  //     "Soft vegetable balls served with chinese gravy",
-  //     4.5,
-  //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5c_yHX2htBSQmrKUo6h4bw5rctcQn4LRsLg&usqp=CAU",
-  //     true);
+
+  @override
+  _DishCardState createState() => _DishCardState();
+}
+
+class _DishCardState extends State<DishCard> {
+  int _count = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +24,7 @@ class DishCard extends StatelessWidget {
       child: Card(
           color: Colors.white,
           shadowColor: Colors.grey[800],
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           margin: EdgeInsets.fromLTRB(0, 7.5, 0, 7.5),
           child: Padding(
               padding: EdgeInsets.all(12),
@@ -34,20 +35,14 @@ class DishCard extends StatelessWidget {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
                         child: Image(
-                            image: NetworkImage(dish.image),
+                            image: NetworkImage(widget.dish.image),
                             height: 100,
                             width: 125,
                             fit: BoxFit.fill),
                       ),
-                      // Container(
-                      //   child: Image.network(
-                      //       "https://holycowvegan.net/wp-content/uploads/2020/03/veg-manchurian-6.jpg"),
-                      //   width: 100,
-                      //   height: 100,
-                      // ),
                       Spacer(),
                       RatingBarIndicator(
-                        rating: dish.stars,
+                        rating: widget.dish.stars,
                         itemBuilder: (context, index) => Icon(
                           Icons.star,
                           color: Colors.amber,
@@ -68,7 +63,7 @@ class DishCard extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              dish.name,
+                              widget.dish.name,
                               style: TextStyle(
                                   fontSize: 19, fontWeight: FontWeight.bold),
                             ),
@@ -81,12 +76,13 @@ class DishCard extends StatelessWidget {
                               padding: const EdgeInsets.all(2),
                               decoration: BoxDecoration(
                                   border: Border.all(
-                                      color: dish.veg
+                                      color: widget.dish.veg
                                           ? Colors.green
                                           : Colors.red)),
                               child: Icon(
                                 Icons.circle,
-                                color: dish.veg ? Colors.green : Colors.red,
+                                color:
+                                    widget.dish.veg ? Colors.green : Colors.red,
                                 size: 15,
                               ),
                             ),
@@ -96,7 +92,7 @@ class DishCard extends StatelessWidget {
                           height: 5,
                         ),
                         Text(
-                          "₹ " + dish.price.toString(),
+                          "₹ " + widget.dish.price.toString(),
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),
@@ -108,7 +104,7 @@ class DishCard extends StatelessWidget {
                           child: SingleChildScrollView(
                             scrollDirection: Axis.vertical,
                             child: Text(
-                              dish.description,
+                              widget.dish.description,
                               style: TextStyle(fontSize: 12),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 5,
@@ -125,7 +121,11 @@ class DishCard extends StatelessWidget {
                                 width: 30, //width of button
 
                                 child: ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      setState(() {
+                                        _count--;
+                                      });
+                                    },
                                     child: Icon(
                                       Icons.remove_sharp,
                                       color: Colors.amber,
@@ -149,7 +149,7 @@ class DishCard extends StatelessWidget {
                               height: 30,
                               child: Center(
                                 child: Text(
-                                  "0",
+                                  _count.toString(),
                                   style: TextStyle(
                                       fontSize: 16, color: Colors.white),
                                 ),
@@ -163,7 +163,11 @@ class DishCard extends StatelessWidget {
                                 width: 30, //width of button
 
                                 child: ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      setState(() {
+                                        _count++;
+                                      });
+                                    },
                                     child: Icon(
                                       Icons.add,
                                       color: Colors.amber,

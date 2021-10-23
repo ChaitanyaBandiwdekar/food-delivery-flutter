@@ -1,10 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:food_delivery/Menu/dish.dart';
-import 'package:food_delivery/Menu/dish_card.dart';
-import 'package:food_delivery/Cuisine/cuisines.dart';
-import 'package:food_delivery/Menu/dish_list.dart';
 import 'package:food_delivery/Menu/menu.dart';
 
 void main() {
