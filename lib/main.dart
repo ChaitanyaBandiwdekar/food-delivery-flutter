@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:food_delivery/Accounts/signup.dart';
 import 'package:food_delivery/Cuisine/cuisineList.dart';
 import 'package:food_delivery/Cuisine/cuisines.dart';
 import 'package:food_delivery/Menu/menu.dart';
@@ -34,8 +35,8 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      // body: Menu(),
-      body: RestaurantCard(r),
-    ));
+            // body: Menu(),
+            body: SignUpPage() //RestaurantCard(r),
+            ));
   }
 }
