@@ -1,18 +1,19 @@
-import 'package:flutter/material.dart';
-import 'package:food_delivery/Cuisine/cuisine.dart';
-import 'package:food_delivery/Cuisine/cuisineList.dart';
-import '../Menu/dish.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+// ignore_for_file: prefer_const_constructors
 
-class Cuisines extends StatefulWidget {
-  const Cuisines({Key? key}) : super(key: key);
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/widgets.dart';
+import 'package:food_delivery/Restaurant/restaurant_list.dart';
+
+class Restaurants extends StatefulWidget {
+  const Restaurants({Key? key}) : super(key: key);
 
   @override
-  _CuisinesState createState() => _CuisinesState();
+  _RestaurantsState createState() => _RestaurantsState();
 }
 
-class _CuisinesState extends State<Cuisines> {
-
+class _RestaurantsState extends State<Restaurants> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -87,7 +88,7 @@ class _CuisinesState extends State<Cuisines> {
                 size: 40,
               ),
               Text(
-                "MENU",
+                "RESTAURANTS",
                 style: TextStyle(
                   fontFamily: 'Oregano',
                   fontSize: 40,
@@ -103,7 +104,7 @@ class _CuisinesState extends State<Cuisines> {
             color: Colors.white,
           ),
           SizedBox(height: 20),
-          CuisineList(),
+          RestaurantList()
         ],
       ),
     );
