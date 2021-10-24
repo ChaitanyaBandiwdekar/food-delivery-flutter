@@ -17,9 +17,12 @@ class _SignUpPageState extends State<SignUpPage> {
   bool enabled = false;
   bool _validate = false;
   bool _passwordVisible = false;
-  bool _confirmpasswordVisible = false;
+  bool _confirmPasswordVisible = false;
 
   TextEditingController unameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
 
   Widget SignupForm() {
     final _formKey = GlobalKey<FormState>();
@@ -57,6 +60,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   height: 20,
                 ),
                 TextFormField(
+                  controller: phoneController,
                   decoration: InputDecoration(
                       labelText: "Phone Number",
                       prefixIcon: Icon(Icons.phone),
@@ -73,9 +77,9 @@ class _SignUpPageState extends State<SignUpPage> {
                     } else if (!regexp.hasMatch(value)) {
                       return "Phone number must contain digits only";
                     } else if (value.length != 10) {
-                      return "Phone number must contaiin only 10 digits";
+                      return "Phone number must contain only 10 digits";
                     } else {
-                      return "";
+                      return null;
                     }
                   },
                 ),
@@ -83,6 +87,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   height: 20,
                 ),
                 TextFormField(
+                  controller: passwordController,
                   obscureText: !_passwordVisible,
                   decoration: InputDecoration(
                       labelText: "Password",
@@ -118,18 +123,19 @@ class _SignUpPageState extends State<SignUpPage> {
                   height: 20,
                 ),
                 TextFormField(
-                  obscureText: !_confirmpasswordVisible,
+                  controller: confirmPasswordController,
+                  obscureText: !_confirmPasswordVisible,
                   decoration: InputDecoration(
                       labelText: "Confirm Password",
                       prefixIcon: Icon(Icons.lock_outline_rounded),
                       suffixIcon: IconButton(
-                        icon: Icon(_confirmpasswordVisible
+                        icon: Icon(_confirmPasswordVisible
                             ? Icons.visibility_outlined
                             : Icons.visibility_off_outlined),
                         color: Theme.of(context).primaryColor,
                         onPressed: () {
                           setState(() {
-                            _confirmpasswordVisible = !_confirmpasswordVisible;
+                            _confirmPasswordVisible = !_confirmPasswordVisible;
                           });
                         },
                       ),
@@ -160,11 +166,14 @@ class _SignUpPageState extends State<SignUpPage> {
                       padding: EdgeInsets.all(0),
                       primary: Colors.black87, //background color of button
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5)),
+                          borderRadius: BorderRadius.circular(8)),
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         print('uname ' + unameController.text);
+                        print('phone ' + phoneController.text);
+                        print('pass ' + passwordController.text);
+                        print('cpass ' + confirmPasswordController.text);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('Processing Data')),
                         );
