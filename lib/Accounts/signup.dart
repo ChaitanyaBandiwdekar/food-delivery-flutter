@@ -243,7 +243,11 @@ class _SignUpPageState extends State<SignUpPage> {
             ],
           ),
           SizedBox(
-            height: 50,
+            height: 30,
+          ),
+          Icon(
+            Icons.person_outline_rounded,
+            size: 100,
           ),
           SignupForm()
         ],

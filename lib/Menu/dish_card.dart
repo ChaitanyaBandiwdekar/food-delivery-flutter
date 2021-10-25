@@ -123,7 +123,9 @@ class _DishCardState extends State<DishCard> {
                                 child: ElevatedButton(
                                     onPressed: () {
                                       setState(() {
-                                        _count--;
+                                        if (_count > 0) {
+                                          _count--;
+                                        }
                                       });
                                     },
                                     child: Icon(

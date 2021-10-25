@@ -47,8 +47,8 @@ class _RestaurantsState extends State<Restaurants> {
               ButtonBar(
                 children: [
                   Container(
-                    // height: 30, //height of button
-                    // width: 30, //width of button
+                      // height: 30, //height of button
+                      // width: 30, //width of button
                       child: ElevatedButton(
                           onPressed: () {},
                           child: Text("Login",
@@ -56,13 +56,13 @@ class _RestaurantsState extends State<Restaurants> {
                           style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.all(0),
                             primary:
-                            Colors.black87, //background color of button
+                                Colors.black87, //background color of button
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5)),
                           ))),
                   Container(
-                    // height: 30, //height of button
-                    // width: 30, //width of button
+                      // height: 30, //height of button
+                      // width: 30, //width of button
                       child: ElevatedButton(
                           onPressed: () {},
                           child: Text("Signup",
@@ -70,7 +70,7 @@ class _RestaurantsState extends State<Restaurants> {
                           style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.all(0),
                             primary:
-                            Colors.black87, //background color of button
+                                Colors.black87, //background color of button
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(5)),
                           )))
