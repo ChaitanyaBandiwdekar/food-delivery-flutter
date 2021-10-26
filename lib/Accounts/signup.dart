@@ -195,62 +195,76 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(10),
-      color: Color(0xFFF6F5F5),
-      child: Column(
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(50.0),
-                child: Image(
-                  image: NetworkImage(
-                      "https://cdn.w600.comps.canstockphoto.com/luxury-gold-spoon-knife-and-fork-logo-clip-art-vector_csp61369165.jpg"),
-                  height: 50,
-                  width: 50,
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.all(10),
+        color: Color(0xFFF6F5F5),
+        child: Column(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(50.0),
+                  child: Image(
+                    image: NetworkImage(
+                        "https://cdn.w600.comps.canstockphoto.com/luxury-gold-spoon-knife-and-fork-logo-clip-art-vector_csp61369165.jpg"),
+                    height: 50,
+                    width: 50,
+                  ),
                 ),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                "RASOI",
-                style: TextStyle(
-                    fontFamily: "PostNoBillsJaffna",
-                    fontSize: 35,
-                    letterSpacing: 1),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Row(
-            children: [
-              Icon(
-                Icons.keyboard_arrow_left_rounded,
-                size: 40,
-              ),
-              Text(
-                "SIGNUP",
-                style: TextStyle(
-                  fontFamily: 'Oregano',
-                  fontSize: 40,
+                SizedBox(
+                  width: 10,
                 ),
-              )
-            ],
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Icon(
-            Icons.person_outline_rounded,
-            size: 100,
-          ),
-          SignupForm()
-        ],
+                Text(
+                  "RASOI",
+                  style: TextStyle(
+                      fontFamily: "PostNoBillsJaffna",
+                      fontSize: 35,
+                      letterSpacing: 1),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                Container(
+                  width: 30,
+                  child: TextButton(
+                      style: TextButton.styleFrom(
+                        padding: EdgeInsets.all(0),
+                        primary: Color(0xFFF6F5F5), //background color of button
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        Icons.keyboard_arrow_left_outlined,
+                        size: 40,
+                        color: Colors.black87,
+                      )),
+                ),
+                Text(
+                  "SIGNUP",
+                  style: TextStyle(
+                    fontFamily: 'Oregano',
+                    fontSize: 40,
+                  ),
+                )
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Icon(
+              Icons.person_outline_rounded,
+              size: 100,
+            ),
+            SignupForm()
+          ],
+        ),
       ),
     );
   }

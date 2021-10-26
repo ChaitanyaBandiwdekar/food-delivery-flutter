@@ -18,7 +18,7 @@ class RestaurantCard extends StatelessWidget {
         margin: EdgeInsets.fromLTRB(0, 7.5, 0, 7.5),
         child: InkWell(
           onTap: () {
-            print("tapped");
+            Navigator.pushNamed(context, '/menu');
           },
           child: Row(
             children: [

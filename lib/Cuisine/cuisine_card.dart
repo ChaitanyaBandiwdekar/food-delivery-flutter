@@ -13,7 +13,7 @@ class CuisineCard extends StatelessWidget {
       margin: EdgeInsets.all(8),
       child: InkWell(
         onTap: () {
-          print("cuisine tapped");
+          Navigator.pushNamed(context, '/restaurants');
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

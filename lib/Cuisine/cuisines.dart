@@ -51,7 +51,9 @@ class _CuisinesState extends State<Cuisines> {
                       // height: 30, //height of button
                       // width: 30, //width of button
                       child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/login');
+                          },
                           child: Text("Login",
                               style: TextStyle(color: Colors.amber)),
                           style: ElevatedButton.styleFrom(
@@ -65,7 +67,9 @@ class _CuisinesState extends State<Cuisines> {
                       // height: 30, //height of button
                       // width: 30, //width of button
                       child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/signup');
+                          },
                           child: Text("Signup",
                               style: TextStyle(color: Colors.amber)),
                           style: ElevatedButton.styleFrom(
@@ -87,6 +91,9 @@ class _CuisinesState extends State<Cuisines> {
             child: Text(
               "CUISINES",
               style: TextStyle(
+                color: Colors.black87,
+                decoration: TextDecoration.none,
+                fontWeight: FontWeight.normal,
                 fontFamily: 'Oregano',
                 fontSize: 40,
               ),

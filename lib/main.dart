@@ -16,6 +16,13 @@ import 'package:food_delivery/Restaurant/restaurants.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
+    routes: {
+      '/cuisines': (context) => Cuisines(),
+      '/restaurants': (context) => Restaurants(),
+      '/menu': (context) => Menu(),
+      '/login': (context) => Scaffold(body: LoginPage()),
+      '/signup': (context) => Scaffold(body: SignUpPage()),
+    },
     home: App(),
   ));
 }
@@ -35,6 +42,6 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(body: LoginPage()));
+    return SafeArea(child: Scaffold(body: Cuisines()));
   }
 }
