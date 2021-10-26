@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:food_delivery/Accounts/signup.dart';
+import 'package:food_delivery/Accounts/login.dart';
 import 'package:food_delivery/Cuisine/cuisine.dart';
 import 'package:food_delivery/Cuisine/cuisine_card.dart';
 import 'package:food_delivery/Cuisine/cuisine_list.dart';
@@ -34,6 +35,6 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(body: SignUpPage()));
+    return SafeArea(child: Scaffold(body: LoginPage()));
   }
 }
