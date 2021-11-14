@@ -116,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                   borderRadius: BorderRadius.circular(50.0),
                   child: Image(
                     image: NetworkImage(
-                        "https://cdn.w600.comps.canstockphoto.com/luxury-gold-spoon-knife-and-fork-logo-clip-art-vector_csp61369165.jpg"),
+                        "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX34988581.jpg"),
                     height: 50,
                     width: 50,
                   ),
