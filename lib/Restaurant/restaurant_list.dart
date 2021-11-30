@@ -7,9 +7,11 @@ import 'restaurant_card.dart';
 import 'rc.dart';
 
 class RestaurantList extends StatelessWidget {
+  final String cuisine;
+  RestaurantList({Key? key, required this.cuisine}) : super(key: key);
   List<Restaurant> restaurants = [
     Restaurant(
-      "China Bistro",
+      "China Bis",
       "Dadar West",
       "Ground Floor, Vidya Bhavan, Near Sena Bhavan, Dadar Shivaji Park, Mumbai, Maharashtra 400028",
       "Flat 21% off if you order using coupon code “Diwali21”",

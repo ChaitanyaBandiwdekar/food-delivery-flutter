@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:food_delivery/Cuisine/cuisine.dart';
+import 'package:food_delivery/Restaurant/restaurants.dart';
 
 class CuisineCard extends StatelessWidget {
   final Cuisine cuisine;
@@ -13,7 +14,9 @@ class CuisineCard extends StatelessWidget {
       margin: EdgeInsets.all(8),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, '/restaurants');
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context) => Restaurants(cuisine: cuisine.name),
+          ));
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

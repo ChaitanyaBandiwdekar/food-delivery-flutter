@@ -7,8 +7,9 @@ import 'package:flutter/widgets.dart';
 import 'package:food_delivery/Restaurant/restaurant_list.dart';
 
 class Restaurants extends StatefulWidget {
-  const Restaurants({Key? key}) : super(key: key);
-
+  final String cuisine;
+  const Restaurants({Key? key, required this.cuisine}) : super(key: key);
+  // SecondScreen({Key key, @required this.text}) : super(key: key);
   @override
   _RestaurantsState createState() => _RestaurantsState();
 }
@@ -123,7 +124,7 @@ class _RestaurantsState extends State<Restaurants> {
               color: Colors.white,
             ),
             SizedBox(height: 20),
-            RestaurantList()
+            RestaurantList(cuisine: widget.cuisine),
           ],
         ),
       ),

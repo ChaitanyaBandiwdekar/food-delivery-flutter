@@ -20,7 +20,7 @@ void main() async {
     debugShowCheckedModeBanner: false,
     routes: {
       '/cuisines': (context) => Cuisines(),
-      '/restaurants': (context) => Restaurants(),
+      // '/restaurants': (context) => Restaurants(),
       '/menu': (context) => Menu(),
       '/login': (context) => Scaffold(body: LoginPage()),
       '/signup': (context) => Scaffold(body: SignUpPage()),
