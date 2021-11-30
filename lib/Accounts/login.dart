@@ -1,6 +1,8 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/Services/auth.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -17,8 +19,10 @@ class _LoginPageState extends State<LoginPage> {
   bool enabled = false;
   bool _passwordVisible = false;
 
-  TextEditingController unameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  final AuthService _auth = AuthService();
 
   Widget LoginForm() {
     final _formKey = GlobalKey<FormState>();
@@ -27,75 +31,87 @@ class _LoginPageState extends State<LoginPage> {
         padding: const EdgeInsets.all(15.0),
         child: Form(
           key: _formKey,
-          child: ListView(children: [
-            Column(
-              children: [
-                TextFormField(
-                  controller: unameController,
-                  decoration: InputDecoration(
-                      labelText: "Username",
-                      prefixIcon: Icon(Icons.person),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue)),
-                      border: OutlineInputBorder()),
-                  keyboardType: TextInputType.text,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
-                  controller: passwordController,
-                  obscureText: !_passwordVisible,
-                  decoration: InputDecoration(
-                      labelText: "Password",
-                      prefixIcon: Icon(Icons.lock_outline_rounded),
-                      suffixIcon: IconButton(
-                        icon: Icon(_passwordVisible
-                            ? Icons.visibility_outlined
-                            : Icons.visibility_off_outlined),
-                        color: Theme.of(context).primaryColor,
-                        onPressed: () {
-                          setState(() {
-                            _passwordVisible = !_passwordVisible;
-                          });
-                        },
+          child: Container(
+            child: ListView(children: [
+              Column(
+                children: [
+                  TextFormField(
+                    controller: emailController,
+                    decoration: InputDecoration(
+                        labelText: "Email",
+                        prefixIcon: Icon(Icons.email_outlined),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue)),
+                        border: OutlineInputBorder()),
+                    keyboardType: TextInputType.text,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    controller: passwordController,
+                    obscureText: !_passwordVisible,
+                    decoration: InputDecoration(
+                        labelText: "Password",
+                        prefixIcon: Icon(Icons.lock_outline_rounded),
+                        suffixIcon: IconButton(
+                          icon: Icon(_passwordVisible
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined),
+                          color: Theme.of(context).primaryColor,
+                          onPressed: () {
+                            setState(() {
+                              _passwordVisible = !_passwordVisible;
+                            });
+                          },
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue)),
+                        border: OutlineInputBorder()),
+                    keyboardType: TextInputType.text,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    width: 100,
+                    height: 40,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.all(0),
+                        primary: Colors.black87, //background color of button
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8)),
                       ),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue)),
-                      border: OutlineInputBorder()),
-                  keyboardType: TextInputType.text,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  width: 100,
-                  height: 40,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.all(0),
-                      primary: Colors.black87, //background color of button
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                    ),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        print('uname ' + unameController.text);
-                        print('pass ' + passwordController.text);
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('You will be logged in soon')),
-                        );
-                      }
-                    },
-                    child: Text(
-                      'Login',
-                      style: TextStyle(color: Colors.amber, fontSize: 18),
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          print('uname ' + emailController.text);
+                          print('pass ' + passwordController.text);
+                          dynamic result =
+                              await _auth.signInWithEmailAndPassword(
+                                  emailController.text,
+                                  passwordController.text);
+
+                          if (result == null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text(
+                                      'Error logging in. Please try again')),
+                            );
+                          }
+                          print(FirebaseAuth.instance.currentUser);
+                        }
+                      },
+                      child: Text(
+                        'Login',
+                        style: TextStyle(color: Colors.amber, fontSize: 18),
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ]),
+                ],
+              ),
+            ]),
+          ),
         ),
       ),
     );
@@ -138,22 +154,22 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Row(
               children: [
-                Container(
-                  width: 30,
-                  child: TextButton(
-                      style: TextButton.styleFrom(
-                        padding: EdgeInsets.all(0),
-                        primary: Color(0xFFF6F5F5), //background color of button
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Icon(
-                        Icons.keyboard_arrow_left_outlined,
-                        size: 40,
-                        color: Colors.black87,
-                      )),
-                ),
+                // Container(
+                //   width: 30,
+                //   child: TextButton(
+                //       style: TextButton.styleFrom(
+                //         padding: EdgeInsets.all(0),
+                //         primary: Color(0xFFF6F5F5), //background color of button
+                //       ),
+                //       onPressed: () {
+                //         Navigator.pop(context);
+                //       },
+                //       child: Icon(
+                //         Icons.keyboard_arrow_left_outlined,
+                //         size: 40,
+                //         color: Colors.black87,
+                //       )),
+                // ),
                 Text(
                   "LOGIN",
                   style: TextStyle(
@@ -170,7 +186,18 @@ class _LoginPageState extends State<LoginPage> {
               Icons.login_outlined,
               size: 100,
             ),
-            LoginForm()
+            LoginForm(),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/signup');
+                },
+                child: Text("Signup", style: TextStyle(color: Colors.amber)),
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.all(0),
+                  primary: Colors.black87, //background color of button
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5)),
+                ))
           ],
         ),
       ),

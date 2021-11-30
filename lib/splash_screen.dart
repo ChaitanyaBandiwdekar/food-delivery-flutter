@@ -4,6 +4,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:food_delivery/Cuisine/cuisines.dart';
+import 'package:food_delivery/wrapper.dart';
+import 'package:provider/provider.dart';
+
+import 'Accounts/customer.dart';
+import 'Services/auth.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -20,8 +25,11 @@ class Splash extends State<SplashScreen> {
   Widget build(BuildContext context) {
     Timer(
         Duration(seconds: 3),
-        () => Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (BuildContext context) => Cuisines())));
+        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (BuildContext context) => StreamProvider<Customer?>.value(
+                initialData: null,
+                value: AuthService().user,
+                child: Wrapper()))));
 
     return MaterialApp(
       home: Scaffold(
@@ -55,8 +63,7 @@ class Splash extends State<SplashScreen> {
             ),
           ],
         ),
-      ) //<- place where the image appears
-          ),
+      )),
     );
   }
 }

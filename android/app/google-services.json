@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "254165127913",
+    "project_id": "rasoi-food-delivery",
+    "storage_bucket": "rasoi-food-delivery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254165127913:android:cc8181a900e31fad1b5678",
+        "android_client_info": {
+          "package_name": "com.kjsce_flutter_oet.food_delivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "254165127913-cb0i880qsa6hniqo0h6h3um4pf5do4o1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtV68AcFPjha-5CUk5u4qwTi-vL0nj7Ns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "254165127913-cb0i880qsa6hniqo0h6h3um4pf5do4o1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

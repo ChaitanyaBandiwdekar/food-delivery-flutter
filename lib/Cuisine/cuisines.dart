@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/Cuisine/cuisine.dart';
 import 'package:food_delivery/Cuisine/cuisine_list.dart';
+import 'package:food_delivery/Services/auth.dart';
 import '../Menu/dish.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -14,6 +16,7 @@ class Cuisines extends StatefulWidget {
 }
 
 class _CuisinesState extends State<Cuisines> {
+  // final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -49,42 +52,22 @@ class _CuisinesState extends State<Cuisines> {
                       letterSpacing: 1),
                 ),
                 Spacer(),
-                ButtonBar(
-                  children: [
-                    Container(
-                        // height: 30, //height of button
-                        // width: 30, //width of button
-                        child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/login');
-                            },
-                            child: Text("Login",
-                                style: TextStyle(color: Colors.amber)),
-                            style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.all(0),
-                              primary:
-                                  Colors.black87, //background color of button
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5)),
-                            ))),
-                    Container(
-                        // height: 30, //height of button
-                        // width: 30, //width of button
-                        child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/signup');
-                            },
-                            child: Text("Signup",
-                                style: TextStyle(color: Colors.amber)),
-                            style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.all(0),
-                              primary:
-                                  Colors.black87, //background color of button
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5)),
-                            )))
-                  ],
-                )
+                Container(
+                    // height: 30, //height of button
+                    // width: 30, //width of button
+                    child: ElevatedButton(
+                        onPressed: () async {
+                          await FirebaseAuth.instance.signOut();
+                          print(FirebaseAuth.instance.currentUser);
+                        },
+                        child: Text("Logout",
+                            style: TextStyle(color: Colors.amber)),
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.all(0),
+                          primary: Colors.black87, //background color of button
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5)),
+                        )))
               ],
             ),
             SizedBox(

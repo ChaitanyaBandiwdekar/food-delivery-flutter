@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/Services/auth.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -19,10 +21,12 @@ class _SignUpPageState extends State<SignUpPage> {
   bool _passwordVisible = false;
   bool _confirmPasswordVisible = false;
 
-  TextEditingController unameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
+
+  final AuthService _auth = AuthService();
 
   Widget SignupForm() {
     final _formKey = GlobalKey<FormState>();
@@ -35,22 +39,23 @@ class _SignUpPageState extends State<SignUpPage> {
             Column(
               children: [
                 TextFormField(
-                  controller: unameController,
+                  controller: emailController,
                   decoration: InputDecoration(
-                      labelText: "Username",
-                      prefixIcon: Icon(Icons.person),
+                      labelText: "Email",
+                      prefixIcon: Icon(Icons.email_outlined),
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.blue)),
                       border: OutlineInputBorder()),
                   keyboardType: TextInputType.text,
                   validator: (value) {
-                    String pattern = r'(^[A-Za-z0-9]+(?:[_-][A-Za-z0-9]+)*$)';
+                    String pattern =
+                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
                     RegExp regex = RegExp(pattern);
 
                     if (value!.isEmpty) {
-                      return 'Please enter a username';
+                      return 'Please enter valid email ID';
                     } else if (!regex.hasMatch(value)) {
-                      return 'Invalid Username!';
+                      return 'Invalid Email ID!';
                     } else {
                       return null;
                     }
@@ -144,12 +149,8 @@ class _SignUpPageState extends State<SignUpPage> {
                       border: OutlineInputBorder()),
                   keyboardType: TextInputType.text,
                   validator: (value) {
-                    String pattern =
-                        r"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$";
-                    RegExp regex = RegExp(pattern);
-
-                    if (!regex.hasMatch(value!)) {
-                      return 'Invalid Password!';
+                    if (value != passwordController.text) {
+                      return 'Passwords should match';
                     } else {
                       return null;
                     }
@@ -168,15 +169,26 @@ class _SignUpPageState extends State<SignUpPage> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8)),
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        print('uname ' + unameController.text);
+                        print('uname ' + emailController.text);
                         print('phone ' + phoneController.text);
                         print('pass ' + passwordController.text);
                         print('cpass ' + confirmPasswordController.text);
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Processing Data')),
-                        );
+
+                        dynamic result =
+                            await _auth.registerWithEmailAndPassword(
+                                emailController.text, passwordController.text);
+
+                        if (result == null) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                                content:
+                                    Text('Signup failed! Please try again')),
+                          );
+                        } else {
+                          Navigator.pop(context);
+                        }
                       }
                     },
                     child: Text(
