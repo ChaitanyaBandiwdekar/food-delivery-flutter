@@ -8,6 +8,8 @@ import 'package:food_delivery/Services/auth.dart';
 import '../Menu/dish.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+import '../wrapper.dart';
+
 class Cuisines extends StatefulWidget {
   const Cuisines({Key? key}) : super(key: key);
 
@@ -58,6 +60,12 @@ class _CuisinesState extends State<Cuisines> {
                     child: ElevatedButton(
                         onPressed: () async {
                           await FirebaseAuth.instance.signOut();
+                          // Navigator.of(context).pushNamed('/wrapper');
+                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                              Wrapper()), (Route<dynamic> route) => false);
+
+
+                          print("In cusines, after signout");
                           print(FirebaseAuth.instance.currentUser);
                         },
                         child: Text("Logout",

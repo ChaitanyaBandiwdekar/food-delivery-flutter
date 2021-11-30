@@ -5,7 +5,10 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   // create user obj based on firebase user
-  Customer _userFromFirebaseUser(User user) {
+  Customer? _userFromFirebaseUser(User? user) {
+    if(user==null){
+        return null;
+    }
     return Customer(user.uid, user.email, user.phoneNumber);
   }
 

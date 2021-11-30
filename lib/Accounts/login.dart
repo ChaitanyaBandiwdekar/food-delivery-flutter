@@ -99,6 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                                       'Error logging in. Please try again')),
                             );
                           }
+                          print("In log-in after logging in the app");
                           print(FirebaseAuth.instance.currentUser);
                         }
                       },

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/Accounts/customer.dart';
 import 'package:food_delivery/Accounts/login.dart';
@@ -12,8 +13,12 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = Provider.of<Customer?>(context);
     if (user == null) {
+      print("In wrapper , inside the if loop - login");
+      print(FirebaseAuth.instance.currentUser);
       return Scaffold(body: LoginPage());
     }
+    print("In wrapper , outside the if loop-cusine");
+    print(FirebaseAuth.instance.currentUser);
     return Cuisines();
   }
 }

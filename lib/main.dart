@@ -10,6 +10,7 @@ import 'package:food_delivery/Menu/menu.dart';
 import 'package:food_delivery/Restaurant/restaurants.dart';
 import 'package:food_delivery/Services/auth.dart';
 import 'package:food_delivery/splash_screen.dart';
+import 'package:food_delivery/wrapper.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -23,6 +24,7 @@ void main() async {
       '/menu': (context) => Menu(),
       '/login': (context) => Scaffold(body: LoginPage()),
       '/signup': (context) => Scaffold(body: SignUpPage()),
+      '/wrapper': (context) => Wrapper(),
     },
     home: App(),
   ));
