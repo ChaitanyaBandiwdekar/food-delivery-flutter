@@ -3,11 +3,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:food_delivery/Menu/menu.dart';
 import 'rc.dart';
 
 class RestaurantCard extends StatelessWidget {
   final Restaurant restaurant;
-  RestaurantCard(this.restaurant);
+  final String cuisine;
+  RestaurantCard({Key? key, required this.restaurant, required this.cuisine}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,9 @@ class RestaurantCard extends StatelessWidget {
         margin: EdgeInsets.fromLTRB(0, 7.5, 0, 7.5),
         child: InkWell(
           onTap: () {
-            Navigator.pushNamed(context, '/menu');
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) => Menu(rid: restaurant.id, cuisine: cuisine),
+            ));
           },
           child: Row(
             children: [

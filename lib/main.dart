@@ -21,7 +21,7 @@ void main() async {
     routes: {
       '/cuisines': (context) => Cuisines(),
       // '/restaurants': (context) => Restaurants(),
-      '/menu': (context) => Menu(),
+      // '/menu': (context) => Menu(),
       '/login': (context) => Scaffold(body: LoginPage()),
       '/signup': (context) => Scaffold(body: SignUpPage()),
       '/wrapper': (context) => Wrapper(),
@@ -40,6 +40,7 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(body: SplashScreen()));
+    return SafeArea(child: Scaffold(body: SplashScreen(),
+    ));
   }
 }

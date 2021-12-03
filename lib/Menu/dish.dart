@@ -5,7 +5,8 @@ class Dish {
   double stars;
   String image;
   bool veg;
+  String tag;
 
   Dish(this.name, this.price, this.description, this.stars, this.image,
-      this.veg);
+      this.veg, this.tag);
 }

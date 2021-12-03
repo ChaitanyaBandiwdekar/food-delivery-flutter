@@ -4,6 +4,8 @@ class Restaurant {
   String image;
   String address;
   String offers;
+  List tags;
+  int id;
 
   Restaurant(
     this.name,
@@ -11,5 +13,7 @@ class Restaurant {
     this.address,
     this.offers,
     this.image,
+    this.tags,
+    this.id,
   );
 }

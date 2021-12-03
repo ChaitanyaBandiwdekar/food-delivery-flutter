@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery/Accounts/signup.dart';
 import 'package:food_delivery/Services/auth.dart';
 
 class LoginPage extends StatefulWidget {
@@ -188,17 +189,37 @@ class _LoginPageState extends State<LoginPage> {
               size: 100,
             ),
             LoginForm(),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/signup');
-                },
-                child: Text("Signup", style: TextStyle(color: Colors.amber)),
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.all(0),
-                  primary: Colors.black87, //background color of button
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5)),
-                ))
+            Container(
+              margin: const EdgeInsets.only(top: 20.0),
+              child: Row(
+
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+
+                    child : Text("Not A Member?",
+                      style: TextStyle(fontSize: 15,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Container(
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/signup');
+                        },
+
+                        child : Text(" Sign Up!",
+                          style: TextStyle(fontSize: 15,
+                              fontWeight: FontWeight.bold, color: Colors.blue),
+                        ),
+                      )
+                  )
+                ],
+
+              ),
+
+            ),
           ],
         ),
       ),
