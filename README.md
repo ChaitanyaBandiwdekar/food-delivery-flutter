@@ -2,9 +2,6 @@
 
  # RASOI – THE ONLINE FOOD DELIVERY APP
 
-## Installation
-
-TBD
 
 ## APP DESCRIPTION
 - RASOI is an online food delivery application that enables users to order foods from their favorite restaurants.
@@ -17,11 +14,11 @@ TBD
 - Convenient to use
 -  Clean UI
 - Search Functionality
-- 	Sort by Cost
 -	Form Validation
 
 ### TECHNOLOGY STACK
-TBD
+- Dart
+- FireBsase
 
 ### UI DESIGN
 [FIGMA LINK](
